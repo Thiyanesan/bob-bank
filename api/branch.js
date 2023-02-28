@@ -24,7 +24,7 @@ app.use(
     const {data , error} = await supabase
     .from('bank_branches')
     .select()
-    .ilike('branch',`${req.query.q}`)    
+    .ilike('branch',`%${req.query.q}%`)    
     .order('ifsc',{ascending:false})
     .range(parseInt(req.query.offset),parseInt(req.query.offset)+parseInt(req.query.limit)-1)
             res.send(data)
